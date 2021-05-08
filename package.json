@@ -1,5 +1,6 @@
 {
   "name": "react-firebase-auth",
+  "description": "React quickstart project with firebase authentication.",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
