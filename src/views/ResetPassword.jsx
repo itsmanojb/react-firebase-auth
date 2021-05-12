@@ -16,7 +16,7 @@ const ResetPassword = () => {
       setMessage('Check mailbox for reset instructions');
     } catch (error) {
       console.log('====================================');
-      setError.log(error.message);
+      setError(error.message);
       console.log(error);
       console.log('====================================');
     }

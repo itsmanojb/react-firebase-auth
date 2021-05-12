@@ -6,6 +6,7 @@ import UnauthenticatedRoute from './components/UnauthenticatedRoute';
 import Signup from './views/Signup';
 import Login from './views/Login';
 import ResetPassword from './views/ResetPassword';
+import EditProfile from './views/EditProfile';
 
 function App() {
   return (
@@ -13,6 +14,11 @@ function App() {
       <AuthProvider>
         <Switch>
           <AuthenticatedRoute exact path="/" component={Dashboard} />
+          <AuthenticatedRoute
+            exact
+            path="/edit-profile"
+            component={EditProfile}
+          />
           <UnauthenticatedRoute path="/signup" component={Signup} />
           <UnauthenticatedRoute path="/login" component={Login} />
           <UnauthenticatedRoute

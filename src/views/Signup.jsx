@@ -6,7 +6,6 @@ const Signup = () => {
   const [error, setError] = useState('');
   const emailRef = useRef();
   const passwordRef = useRef();
-  const cpasswordRef = useRef();
   const history = useHistory();
   const { signup } = useAuth();
 
@@ -18,7 +17,7 @@ const Signup = () => {
       history.push('/');
     } catch (error) {
       console.log('====================================');
-      setError.log(error.message);
+      setError(error.message);
       console.log(error);
       console.log('====================================');
     }
@@ -37,10 +36,6 @@ const Signup = () => {
           <div>
             <label htmlFor="password">Type password</label>
             <input type="password" id="password" ref={passwordRef} required />
-          </div>
-          <div>
-            <label htmlFor="cpassword">Confirm password</label>
-            <input type="password" id="cpassword" ref={cpasswordRef} required />
           </div>
         </fieldset>
         <p>{error}</p>
