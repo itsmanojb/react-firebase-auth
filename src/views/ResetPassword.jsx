@@ -1,21 +1,19 @@
 import { useRef, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-const Signup = () => {
+const ResetPassword = () => {
+  const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const emailRef = useRef();
-  const passwordRef = useRef();
-  const cpasswordRef = useRef();
-  const history = useHistory();
-  const { signup } = useAuth();
+  const { resetPassword } = useAuth();
 
   async function handleSubmit(event) {
     event.preventDefault();
 
     try {
-      await signup(emailRef.current.value, passwordRef.current.value);
-      history.push('/');
+      await resetPassword(emailRef.current.value);
+      setMessage('Check mailbox for reset instructions');
     } catch (error) {
       console.log('====================================');
       setError.log(error.message);
@@ -27,30 +25,23 @@ const Signup = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h2>Signup</h2>
+        <h2>Reset password</h2>
+        <p>{message}</p>
         <fieldset>
           <legend>Enter details</legend>
           <div>
             <label htmlFor="emailId">Enter email address</label>
             <input type="email" id="emailId" ref={emailRef} required />
           </div>
-          <div>
-            <label htmlFor="password">Type password</label>
-            <input type="password" id="password" ref={passwordRef} required />
-          </div>
-          <div>
-            <label htmlFor="cpassword">Confirm password</label>
-            <input type="password" id="cpassword" ref={cpasswordRef} required />
-          </div>
         </fieldset>
         <p>{error}</p>
-        <button type="submit">Signup</button>
+        <button type="submit">Submit</button>
       </form>
       <p>
-        Already got an account ? <Link to="/login">Login</Link>
+        <Link to="/login">Login</Link>
       </p>
     </div>
   );
 };
 
-export default Signup;
+export default ResetPassword;

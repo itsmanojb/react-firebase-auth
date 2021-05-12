@@ -1,8 +1,9 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 const Login = () => {
+  const [error, setError] = useState('');
   const emailRef = useRef();
   const passwordRef = useRef();
   const history = useHistory();
@@ -16,7 +17,7 @@ const Login = () => {
       history.push('/');
     } catch (error) {
       console.log('====================================');
-      console.log('Failed to log in');
+      setError(error.message);
       console.log(error);
       console.log('====================================');
     }
@@ -36,7 +37,11 @@ const Login = () => {
             <label htmlFor="password">Type password</label>
             <input type="password" id="password" ref={passwordRef} required />
           </div>
+          <p>
+            Forgot password ? <Link to="/reset-password">Reset</Link>
+          </p>
         </fieldset>
+        <p>{error}</p>
         <button type="submit">Login</button>
       </form>
       <p>

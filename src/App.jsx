@@ -5,6 +5,7 @@ import AuthenticatedRoute from './components/AuthenticatedRoute';
 import UnauthenticatedRoute from './components/UnauthenticatedRoute';
 import Signup from './views/Signup';
 import Login from './views/Login';
+import ResetPassword from './views/ResetPassword';
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
           <AuthenticatedRoute exact path="/" component={Dashboard} />
           <UnauthenticatedRoute path="/signup" component={Signup} />
           <UnauthenticatedRoute path="/login" component={Login} />
+          <UnauthenticatedRoute
+            path="/reset-password"
+            component={ResetPassword}
+          />
           {/* <Route path="/" component={Login} /> */}
         </Switch>
       </AuthProvider>
